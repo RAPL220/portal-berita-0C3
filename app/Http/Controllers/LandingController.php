@@ -17,11 +17,14 @@ class LandingController extends Controller
             ->skip(4)
             ->take(6)
             ->get();
-
+        $SecondaryDownlist = ArticlesNews::orderBy('created_at', 'desc')
+            ->skip(10)
+            ->take(6)
+            ->get();
         // 4 terbanyak views
         $mostViewed = ArticlesNews::orderBy('views', 'desc')
-            ->limit(4)
+            ->limit(5)
             ->get();
-        return view('pages.landing', compact('articleBanners', 'featureds', 'news', 'newsDownList', 'mostViewed'));
+        return view('pages.landing', compact('articleBanners', 'featureds', 'news', 'newsDownList', 'mostViewed', 'SecondaryDownlist'));
     }
 }

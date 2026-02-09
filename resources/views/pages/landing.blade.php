@@ -144,7 +144,7 @@
         /* ==================== GRID CARDS SECTION ==================== */
         .grid-cards-section {
             max-width: 1400px;
-            margin: -3rem auto 4rem;
+            margin: 3rem auto 4rem;
             padding: 0 2rem;
             position: relative;
             z-index: 10;
@@ -814,7 +814,7 @@
     <div class="hero-wrapper">
         <div class="hero-container">
             <div class="hero-badge">
-                ⚡ BERITA TERKINI
+                BERITA TERKINI
             </div>
             <div class="swiper hero-swiper">
                 <div class="swiper-wrapper">
@@ -873,7 +873,7 @@
                 </div>
 
                 <div class="news-container">
-                    @foreach ($news->skip(4)->take(6) as $item)
+                    @foreach ($newsDownList as $item)
                         <a href="{{ route('news.show', $item->slug) }}" class="news-box">
                             <div class="news-box-image-wrapper">
                                 <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="{{ $item->title }}"
@@ -942,7 +942,7 @@
                     </div>
 
                     <div class="sidebar-box-content">
-                        @foreach ($newsDownList as $side)
+                        @foreach ($SecondaryDownlist as $side)
                             <a href="{{ route('news.show', $side->slug) }}" class="sidebar-item">
                                 <img src="{{ asset('storage/' . $side->thumbnail) }}" alt="{{ $side->title }}"
                                     class="sidebar-item-image">
@@ -964,7 +964,7 @@
         <div class="section-header">
             <div class="section-title-wrapper">
                 <div class="section-number">02</div>
-                <h2 class="section-title">Berita Populer</h2>
+                <h2 class="section-title">Paling Banyak Dilihat</h2>
             </div>
             <a href="{{ route('news.index') }}" class="btn-view-all">
                 Lihat Semua →
