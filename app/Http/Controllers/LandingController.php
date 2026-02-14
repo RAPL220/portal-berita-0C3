@@ -9,7 +9,7 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $articleBanners = ArticlesNews::all()->take(5);
+        $articleBanners = ArticlesNews::orderBy('created_at', 'desc')->get()->take(5);
         $featureds = ArticlesNews::where('is_featured', true)->get();
         // ambil yang terbaru limit 4
         $news = ArticlesNews::orderBy('created_at', 'desc')->get()->take(4);
