@@ -760,128 +760,122 @@
         <div class="filter-section fade-in-up">
             <div class="filter-left">
                 <div class="filter-label">
-                    <span class="filter-number">01</span>
-                    <span>URUTKAN</span>
-                </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="sortNews('latest')">TERBARU</button>
-                    <button class="filter-btn" onclick="sortNews('oldest')">TERLAMA</button>
-                    <button class="filter-btn" onclick="sortNews('popular')">POPULER</button>
-                </div>
-            </div>
-            <div class="view-toggle">
-                <button class="view-btn active" onclick="toggleView('grid')" title="Grid View">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path
-                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
-                    </svg>
-                </button>
-                <button class="view-btn" onclick="toggleView('list')" title="List View">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                    </svg>
-                </button>
-            </div>
-        </div>
 
-        <!-- News Grid -->
-        @if ($category->news->count() > 0)
-            <div class="news-grid" id="newsGrid">
-                @foreach ($category->news as $index => $article)
-                    <a href="{{ route('news.show', $article->slug) }}"
-                        class="news-card fade-in-up stagger-{{ ($index % 6) + 1 }}">
-                        <div class="news-card-image-wrapper">
-                            <span class="news-card-badge">{{ strtoupper($category->title) }}</span>
-                            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}"
-                                class="news-card-image">
-                        </div>
-                        <div class="news-card-content">
-                            <h3 class="news-card-title">{{ $article->title }}</h3>
-                            <div class="news-card-excerpt">{!! Str::limit(strip_tags($article->content), 150) !!}</div>
-                            <div class="news-card-meta">
-                                <div class="news-card-author">
-                                    <img src="{{ asset('storage/' . $article->author->avatar) }}"
-                                        alt="{{ $article->author->name }}" class="author-avatar-small">
-                                    <span class="author-name-small">{{ $article->author->name }}</span>
-                                </div>
-                                <div class="news-card-date">
-                                    <svg class="date-icon" fill="currentColor" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                                    </svg>
-                                    <span>{{ \Carbon\Carbon::parse($article->created_at)->diffForHumans() }}</span>
+                </div>
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="toggleView('grid')" title="Grid View">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
+                        </svg>
+                    </button>
+                    <button class="view-btn" onclick="toggleView('list')" title="List View">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- News Grid -->
+            @if ($category->news->count() > 0)
+                <div class="news-grid" id="newsGrid">
+                    @foreach ($category->news as $index => $article)
+                        <a href="{{ route('news.show', $article->slug) }}"
+                            class="news-card fade-in-up stagger-{{ ($index % 6) + 1 }}">
+                            <div class="news-card-image-wrapper">
+                                <span class="news-card-badge">{{ strtoupper($category->title) }}</span>
+                                <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}"
+                                    class="news-card-image">
+                            </div>
+                            <div class="news-card-content">
+                                <h3 class="news-card-title">{{ $article->title }}</h3>
+                                <div class="news-card-excerpt">{!! Str::limit(strip_tags($article->content), 150) !!}</div>
+                                <div class="news-card-meta">
+                                    <div class="news-card-author">
+                                        <img src="{{ asset('storage/' . $article->author->avatar) }}"
+                                            alt="{{ $article->author->name }}" class="author-avatar-small">
+                                        <span class="author-name-small">{{ $article->author->name }}</span>
+                                    </div>
+                                    <div class="news-card-date">
+                                        <svg class="date-icon" fill="currentColor" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+                                            <path
+                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                                        </svg>
+                                        <span>{{ \Carbon\Carbon::parse($article->created_at)->diffForHumans() }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                @endforeach
-            </div>
-        @else
-            <!-- Empty State -->
-            <div class="empty-state fade-in-up">
-                <div class="empty-icon-box">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="60" height="60">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
+                        </a>
+                    @endforeach
                 </div>
-                <h2 class="empty-title">BELUM ADA ARTIKEL</h2>
-                <p class="empty-description">
-                    Saat ini belum ada artikel dalam kategori {{ $category->title }}.
-                    Silakan kembali lagi nanti atau jelajahi kategori lainnya.
-                </p>
-                <a href="{{ route('landing') }}" class="empty-btn">
-                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                    <span>KEMBALI KE BERANDA</span>
-                </a>
-            </div>
-        @endif
-    </div>
+            @else
+                <!-- Empty State -->
+                <div class="empty-state fade-in-up">
+                    <div class="empty-icon-box">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="60" height="60">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h2 class="empty-title">BELUM ADA ARTIKEL</h2>
+                    <p class="empty-description">
+                        Saat ini belum ada artikel dalam kategori {{ $category->title }}.
+                        Silakan kembali lagi nanti atau jelajahi kategori lainnya.
+                    </p>
+                    <a href="{{ route('landing') }}" class="empty-btn">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                        <span>KEMBALI KE BERANDA</span>
+                    </a>
+                </div>
+            @endif
+        </div>
 
-    <script>
-        // Toggle View (Grid/List)
-        function toggleView(view) {
-            const newsGrid = document.getElementById('newsGrid');
-            const viewButtons = document.querySelectorAll('.view-btn');
+        <script>
+            // Toggle View (Grid/List)
+            function toggleView(view) {
+                const newsGrid = document.getElementById('newsGrid');
+                const viewButtons = document.querySelectorAll('.view-btn');
 
-            viewButtons.forEach(btn => btn.classList.remove('active'));
-            event.target.closest('.view-btn').classList.add('active');
+                viewButtons.forEach(btn => btn.classList.remove('active'));
+                event.target.closest('.view-btn').classList.add('active');
 
-            if (view === 'list') {
-                newsGrid.classList.add('list-view');
-            } else {
-                newsGrid.classList.remove('list-view');
+                if (view === 'list') {
+                    newsGrid.classList.add('list-view');
+                } else {
+                    newsGrid.classList.remove('list-view');
+                }
             }
-        }
 
-        // Sort News
-        function sortNews(sortType) {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            // Sort News
+            function sortNews(sortType) {
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
 
-            // Here you would typically make an AJAX call to re-fetch sorted data
-            console.log('Sorting by:', sortType);
+                // Here you would typically make an AJAX call to re-fetch sorted data
+                console.log('Sorting by:', sortType);
 
-            // You can implement actual sorting logic here or redirect with query params
-            // window.location.href = `?sort=${sortType}`;
-        }
-
-        // Smooth scroll to content
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('scroll')) {
-                document.querySelector('.category-content').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                // You can implement actual sorting logic here or redirect with query params
+                // window.location.href = `?sort=${sortType}`;
             }
-        });
-    </script>
 
-@endsection
+            // Smooth scroll to content
+            document.addEventListener('DOMContentLoaded', function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.has('scroll')) {
+                    document.querySelector('.category-content').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        </script>
+
+    @endsection

@@ -47,7 +47,12 @@ class NewsController extends Controller
 
     public function category($slug)
     {
-        $category = Categories::where('slug', $slug)->first();
+        $category = Categories::where('slug', $slug)
+            ->with(['news' => function ($query) {
+                $query->orderBy('created_at', 'desc');
+            }])
+            ->firstOrFail();
+
         return view('pages.news.category', compact('category'));
     }
 }
