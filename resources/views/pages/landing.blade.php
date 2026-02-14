@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dijie Plus')
+@section('title', 'Fokus Kito')
 
 @section('content')
 
@@ -27,6 +27,73 @@
         body {
             background: var(--bg-light);
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* ==================== TOP BANNER ==================== */
+        .top-banner-section {
+            width: 100%;
+            background: var(--bg-light);
+            padding: 1.5rem 0;
+        }
+
+        .banner-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .banner-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banner-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(230, 57, 70, 0.25);
+        }
+
+        /* Responsive Banner */
+        @media (max-width: 1024px) {
+            .banner-container {
+                padding: 0 1.5rem;
+            }
+
+            .banner-image {
+                border-radius: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-banner-section {
+                padding: 1rem 0;
+            }
+
+            .banner-container {
+                padding: 0 1rem;
+            }
+
+            .banner-image {
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .top-banner-section {
+                padding: 0.75rem 0;
+            }
+
+            .banner-container {
+                padding: 0 1rem;
+            }
+
+            .banner-image {
+                border-radius: 6px;
+            }
         }
 
         /* ==================== HERO SECTION ==================== */
@@ -810,6 +877,13 @@
         }
     </style>
 
+    <!-- Top Banner Section -->
+    <section class="top-banner-section">
+        <div class="banner-container">
+            <img src="{{ asset('/asset/img/banner_main.jpeg') }}" alt="Banner Utama" class="banner-image">
+        </div>
+    </section>
+
     <!-- Hero Section with Swiper -->
     <div class="hero-wrapper">
         <div class="hero-container">
@@ -902,6 +976,35 @@
 
             <!-- Sidebar -->
             <aside class="sidebar-container">
+
+                <!-- Popular Reading Widget -->
+                <div class="sidebar-box">
+                    <div class="sidebar-box-header">
+                        <div class="sidebar-box-icon">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                            </svg>
+                        </div>
+                        <h3 class="sidebar-box-title">Berita Terkini</h3>
+                    </div>
+
+                    <div class="sidebar-box-content">
+                        @foreach ($SecondaryDownlist as $side)
+                            <a href="{{ route('news.show', $side->slug) }}" class="sidebar-item">
+                                <img src="{{ asset('storage/' . $side->thumbnail) }}" alt="{{ $side->title }}"
+                                    class="sidebar-item-image">
+                                <div class="sidebar-item-content">
+                                    <h4 class="sidebar-item-title">{{ $side->title }}</h4>
+                                    <span
+                                        class="sidebar-item-time">{{ \Carbon\Carbon::parse($side->created_at)->diffForHumans() }}</span>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+
                 <!-- Featured News Widget -->
                 <div class="sidebar-box">
                     <div class="sidebar-box-header">
@@ -929,32 +1032,7 @@
                     </div>
                 </div>
 
-                <!-- Popular Reading Widget -->
-                <div class="sidebar-box">
-                    <div class="sidebar-box-header">
-                        <div class="sidebar-box-icon">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-                            </svg>
-                        </div>
-                        <h3 class="sidebar-box-title">Terpopuler</h3>
-                    </div>
 
-                    <div class="sidebar-box-content">
-                        @foreach ($SecondaryDownlist as $side)
-                            <a href="{{ route('news.show', $side->slug) }}" class="sidebar-item">
-                                <img src="{{ asset('storage/' . $side->thumbnail) }}" alt="{{ $side->title }}"
-                                    class="sidebar-item-image">
-                                <div class="sidebar-item-content">
-                                    <h4 class="sidebar-item-title">{{ $side->title }}</h4>
-                                    <span
-                                        class="sidebar-item-time">{{ \Carbon\Carbon::parse($side->created_at)->diffForHumans() }}</span>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
             </aside>
         </div>
     </section>
