@@ -12,10 +12,10 @@
                     </div>
                 </div>
                 <p class="footer-description">
-                    Portal berita terpercaya yang menyajikan informasi terkini seputar Palembang dan Sumatera Selatan.
-                    Kami berkomitmen memberikan berita berkualitas dan akurat untuk Anda.
+                    Sumber berita nasional terpercaya yang menghadirkan informasi terkini, tajam, dan relevan untuk
+                    masyarakat Indonesia.
                 </p>
-                <div class="social-links">
+                {{-- <div class="social-links">
                     <a href="#" class="social-link" aria-label="Facebook">
                         <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -40,7 +40,7 @@
                                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                     </a>
-                </div>
+                </div> --}}
             </div>
 
             <!-- Kategori Section -->
@@ -57,24 +57,24 @@
             </div>
 
             <!-- Tentang Kami Section -->
-            <div class="footer-section">
-                <h3 class="footer-heading">
-                    <span class="heading-number">02</span>
-                    <span>TENTANG KAMI</span>
-                </h3>
-                <ul class="footer-links">
-                    <li><a href="#">Redaksi</a></li>
-                    <li><a href="#">Pedoman Media Siber</a></li>
-                    <li><a href="#">Kontak</a></li>
-                    <li><a href="#">Karir</a></li>
-                    <li><a href="#">Advertise</a></li>
-                </ul>
-            </div>
+            {{-- <div class="footer-section"> --}}
+            {{-- <h3 class="footer-heading"> --}}
+            {{-- <span class="heading-number">02</span> --}}
+            {{-- <span>TENTANG KAMI</span> --}}
+            {{-- </h3> --}}
+            {{-- <ul class="footer-links"> --}}
+            {{-- <li><a href="#">Berita Terkini</a></li> --}}
+            {{-- <li><a href="#">Pedoman Media Siber</a></li> --}}
+            {{-- <li><a href="#">Kontak</a></li> --}}
+            {{-- <li><a href="#">Karir</a></li> --}}
+            {{-- <li><a href="#">Advertise</a></li> --}}
+            {{-- </ul> --}}
+            {{-- </div> --}}
 
             <!-- Hubungi Kami Section -->
             <div class="footer-section">
                 <h3 class="footer-heading">
-                    <span class="heading-number">03</span>
+                    <span class="heading-number">02</span>
                     <span>HUBUNGI KAMI</span>
                 </h3>
                 <ul class="footer-links footer-contact">
@@ -85,7 +85,7 @@
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <span>fokuskito@gmail.com</span>
+                        <span>Editor@dijieplus.com</span>
                     </li>
                     <li>
                         <div class="contact-icon-wrapper">
@@ -94,7 +94,7 @@
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                         </div>
-                        <span>+62 711 123 4567</span>
+                        <span>+62858 4016 0832</span>
                     </li>
                     <li>
                         <div class="contact-icon-wrapper">
